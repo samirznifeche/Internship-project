@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -21,6 +22,18 @@ class Page:
     def click(self, *locator):
         self.driver.find_element(*locator).click()
 
+    def hover_element(self, *locator):
+        element = self.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element)
+        actions.perform()
+
+    def wait_for_element(self, *locator):
+        self.wait.until(
+            EC.presence_of_element_located(locator),
+            message=f"Element by {locator} not found"
+        )
+
     def wait_for_element_clickable(self, *locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
@@ -32,6 +45,12 @@ class Page:
             EC.element_to_be_clickable(locator),
             message=f"Element by {locator} not clickable"
         ).click()
+
+    def verify_url(self, expected_url):
+        actual_url = self.driver.current_url
+        print('Current URL: ', actual_url)
+        assert actual_url == expected_url, \
+            f"Expected URL '{expected_url}' did not match current URL '{actual_url}'"
 
     def verify_partial_url(self, partial_url):
         actual_url = self.driver.current_url
