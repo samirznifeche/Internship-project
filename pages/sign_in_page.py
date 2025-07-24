@@ -1,5 +1,6 @@
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
+from time import sleep
 
 
 class SignInPage(Page):
@@ -14,3 +15,4 @@ class SignInPage(Page):
         self.input_text(email, *self.EMAIL_FIELD)
         self.input_text(password, *self.PASSWORD_FIELD)
         self.click(*self.CONTINUE_BTN)
+        # sleep(1) # For BrowserStack

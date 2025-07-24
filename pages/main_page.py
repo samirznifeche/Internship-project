@@ -7,7 +7,8 @@ class MainPage(Page):
     SETTINGS_OPT = (By.XPATH, "//div[text()='Settings']")
 
     def click_settings(self):
-        self.wait_for_element_click(*self.SETTINGS_OPT) # For normal browser mode
+        # self.verify_url('https://soft.reelly.io/')
+        self.wait_for_element_click(*self.SETTINGS_OPT) # For normal browser testing
         # sleep(1) # For firefox browser testing
 
         ### Verify element is displayed (HEADLESS MODE)
