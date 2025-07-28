@@ -5,11 +5,12 @@ from time import sleep
 
 class MainPage(Page):
     SETTINGS_OPT = (By.XPATH, "//div[text()='Settings']")
+    MENU_BTN = (By.XPATH, "//*[text()='Menu']")
 
     def click_settings(self):
         # self.verify_url('https://soft.reelly.io/')
-        self.wait_for_element_click(*self.SETTINGS_OPT) # For normal browser testing
-        # sleep(1) # For firefox browser testing
+        self.wait_for_element_click(*self.SETTINGS_OPT) # (NORMAL BROWSER TESTING)
+        # sleep(1) # (FIREFOX BROWSER TESTING)
 
         ### Verify element is displayed (HEADLESS MODE)
         # element = self.find_element(*self.SETTINGS_OPT)
@@ -32,3 +33,7 @@ class MainPage(Page):
         #
         # element = self.find_element(*self.SETTINGS_OPT)
         # self.driver.execute_script("arguments[0].click();", element)
+
+    ### (MOBILE WEB TESTING)
+    def click_menu(self):
+            self.wait_for_element_click(*self.MENU_BTN)

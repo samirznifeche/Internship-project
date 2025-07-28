@@ -7,9 +7,10 @@ class SettingsPage(Page):
     COMMUNITY_OPT = (By.XPATH, "//div[text()='Community']")
 
     def click_community(self):
-        self.wait_for_element_click(*self.COMMUNITY_OPT)  # For normal browser mode
+        self.driver.execute_script("window.scrollBy(0,2000)", "") # (MOBILE WEB TESTING)
+        self.wait_for_element_click(*self.COMMUNITY_OPT)
 
-        ###  Click element on step 4 similarly to the fix for step 3
+        ###  Click element on step 4 similarly to the fix for step 3 (HEADLESS MODE)
         # sleep(0.5)
         # self.driver.execute_script("""
         #         const menu = document.querySelector('.menu-block');
