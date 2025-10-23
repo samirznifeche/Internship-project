@@ -1,6 +1,7 @@
 from pages.base_page import Page
 from pages.community_page import CommunityPage
 from pages.main_page import MainPage
+from pages.secondary_page import SecondaryPage
 from pages.settings_page import SettingsPage
 from pages.sign_in_page import SignInPage
 
@@ -10,5 +11,6 @@ class Application(Page):
         self.base_page = Page(driver)
         self.community_page = CommunityPage(driver)
         self.main_page = MainPage(driver)
+        self.secondary_page = SecondaryPage(driver)
         self.settings_page = SettingsPage(driver)
         self.sign_in_page = SignInPage(driver)
